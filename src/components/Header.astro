@@ -1,0 +1,87 @@
+---
+import TextSlider from "../components/TextSlider.astro";
+import Separator from "../components/Separator.astro";
+
+// Get the current pathname
+const currentPath = Astro.url.pathname;
+// Define a map of routes
+const routes = {
+  "/": "Home",
+  "/releases/": "Releases",
+  "/store/": "Store",
+  "/Shows/": "Shows",
+  "/contact/": "Contact",
+};
+// Determine the active route
+const activeRoute = routes[currentPath] || null;
+---
+
+<header>
+  <h1>
+    <a href="/" class={activeRoute === "Home" ? "current" : ""}
+      ><TextSlider content="PHICTION" /></a>
+  </h1>
+  <ul>
+    <li>
+      <a
+        href="/releases/"
+        class={activeRoute === "Releases" ? "current" : ""}
+        data-astro-prefetch><TextSlider content="Releases" /></a>
+    </li>
+    <li>
+      <a
+        href="/Shows/"
+        class={activeRoute === "Shows" ? "current" : ""}
+        data-astro-prefetch><TextSlider content="Shows" /></a>
+    </li>
+    <li>
+      <a
+        href="/store/"
+        class={activeRoute === "Store" ? "current" : ""}
+        data-astro-prefetch><TextSlider content="Store" /></a>
+    </li>
+    <li>
+      <a
+        href="/contact/"
+        class={activeRoute === "Contact" ? "current" : ""}
+        data-astro-prefetch><TextSlider content="Contact" /></a>
+    </li>
+  </ul>
+</header>
+<Separator />
+
+<style>
+  header {
+    grid-template-columns: auto 1fr auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: min-content auto;
+    font-weight: 700;
+    padding: 1rem 0;
+    gap: 0rem;
+    align-items: center;
+  }
+  header a.current {
+    pointer-events: none;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: inherit;
+    margin: 0;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    grid-column: auto / span 2;
+    font-size: 1rem;
+    justify-self: end;
+  }
+  @media screen and (min-width: 50em) {
+    header {
+      grid-template-columns: 20vw 1fr auto auto;
+    }
+  }
+</style>

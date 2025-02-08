@@ -1,0 +1,28 @@
+---
+/*
+import { getCollection } from "astro:content";
+
+import ArtistGrid from "../components/ArtistGrid.astro";
+import ArtistGridHeader from "../components/ArtistGridHeader.astro";
+import Preloader from "../components/Preloader.astro";
+
+const allArtists = await getCollection("artists");
+const artistsTotal = allArtists.length;
+
+*/
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const imageUrl = "/images/main.jpg";
+const title = "PHICTION | Official Site";
+
+---
+
+<BaseLayout title={title}>
+  <img 
+    src={imageUrl} 
+    alt="PHICTION Official Banner" 
+    style="width: 100vw; height: 80vh; object-fit: cover; display: block;" 
+  />
+</BaseLayout>
+
+<script src="../scripts/index.js"></script>

@@ -1,0 +1,71 @@
+---
+import Separator from "../components/Separator.astro";
+---
+
+<Separator />
+<footer>
+  <!-- Left Icons -->
+  <div class="footer-icons">
+    <a href="https://open.spotify.com/artist/7ASmfdcTILYpuvra3EYPZv?si=d0ZXJEIGRzyBPh61KsOXBw" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://soundcloud.com/phctn" target="_blank" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://music.apple.com" target="_blank" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://youtube.com/phctn" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <!-- Center Text -->
+  <p>
+    © 2025 PHICTION - 
+    <a href="/privacy-policy">Privacy Policy</a> - 
+    <a href="/terms">Terms and Conditions</a>
+  </p>
+
+  <!-- Right Icons -->
+  <div class="footer-icons">
+    <a href="https://instagram.com/phctn" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com/phctn" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://facebook.com/phictionmusic" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://tiktok.com/@phctn_" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    justify-content: space-between; /* Spread out left, center, right */
+    align-items: center;
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  .footer-icons {
+    display: flex;
+    gap: 1rem; /* Space between icons */
+  }
+
+  .footer-icons a {
+    font-size: 1.5rem; /* Adjust icon size */
+    color: var(--color-text-alt);
+    transition: color 0.3s ease-in-out;
+  }
+
+  .footer-icons a:hover {
+    color: var(--color-accent); /* Change color on hover */
+  }
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-text-alt);
+  }
+
+  p a {
+    color: var(--color-text-alt);
+    text-decoration: none;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+</style>
