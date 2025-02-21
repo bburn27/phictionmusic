@@ -3,16 +3,24 @@ import { getCollection } from "astro:content";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AlbumCard from "../components/AlbumCard.astro";
+import Preloader from "../components/Preloader.astro";
 
 const imageUrl = "/images/main.jpg";
 const title = "PHICTION | Official Site";
 
-// Sample album data (Replace this with actual album collection fetching logic)
+// Fetch all albums and sort them by date (newest first)
 const albums = await getCollection("albums");
+const mostRecentAlbum = albums
+  .filter(album => album.data.publishDate) 
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())[0]; 
+
 ---
 
 <BaseLayout title={title}>
   <!-- Background Image Container -->
+
+  <Preloader />
+
   <div class="background-container">
     <img 
       src={imageUrl} 
@@ -22,9 +30,7 @@ const albums = await getCollection("albums");
 
     <!-- AlbumCard Overlay -->
     <div class="overlay">
-      {albums.map((album) => (
-        <AlbumCard album={album} />
-      ))}
+      {mostRecentAlbum && <AlbumCard album={mostRecentAlbum} />}
     </div>
   </div>
 </BaseLayout>
@@ -33,9 +39,9 @@ const albums = await getCollection("albums");
 
 <style>
   .background-container {
-    position: relative;
-    width: 100vw;
-    height: 80vh;
+    position: center;
+    width: 98.25vw;
+    height: 85vh;
     overflow: hidden;
   }
 
@@ -44,7 +50,7 @@ const albums = await getCollection("albums");
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: blur(50px);
+    filter: blur(30px);
   }
 
   .overlay {
@@ -53,12 +59,9 @@ const albums = await getCollection("albums");
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 2rem;
-    /*background: rgba(0, 0, 0, 0.4);  Optional for contrast */
   }
 </style>

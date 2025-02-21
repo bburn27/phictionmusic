@@ -33,23 +33,18 @@ import Separator from "../components/Separator.astro";
     display: flex;
     justify-content: space-between; /* Spread out left, center, right */
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     width: 100%;
   }
 
   .footer-icons {
     display: flex;
-    gap: 1rem; /* Space between icons */
+    gap: 1.5rem; /* Space between icons */
   }
 
   .footer-icons a {
-    font-size: 1.5rem; /* Adjust icon size */
-    color: var(--color-text-alt);
-    transition: color 0.3s ease-in-out;
-  }
-
-  .footer-icons a:hover {
-    color: var(--color-accent); /* Change color on hover */
+    font-size: 2.5rem; /* Adjust icon size */
+    transition: colors 0.3s ease-in-out;
   }
 
   p {
@@ -57,12 +52,6 @@ import Separator from "../components/Separator.astro";
     font-weight: bold;
     line-height: 1.4;
     text-align: center;
-    color: var(--color-text-alt);
-  }
-
-  p a {
-    color: var(--color-text-alt);
-    text-decoration: none;
   }
 
   p a:hover {
