@@ -74,7 +74,7 @@ const { Content } = await render(artist);
         <h3>Biography</h3>
         <Content />
         <dl>
-          <dt>Genre</dt><dd>{artist.data.genre}</dd>
+          <dt>Genres</dt><dd>{artist.data.genre}</dd>
         </dl>
       </div>
       {
@@ -125,13 +125,19 @@ const { Content } = await render(artist);
       grid-template-areas: "img img" "content albums";
     }
     @media screen and (min-width: 50em) {
-      grid-template-columns: 30vw 1fr 170px;
+      grid-template-columns: 30vw 2fr 170px;
       grid-template-areas: "img content albums";
     }
   }
   .albums {
     grid-area: albums;
   }
+  .content {
+    width: 100%;  
+    max-width: 80%;  
+    display: block; 
+}
+
   .content p:last-child {
     margin-top: 2.5rem;
     display: flex;

@@ -10,4 +10,4 @@ tracks:
 artist: "phiction"
 ---
 
-**ONLY U** is the debut EP by Neo-Soul artist Teros, offering an introspective journey through textured soundscapes and soulful vocals. Blending the emotional depth of Neo-Soul with subtle psychedelic elements, the project captures the fragility of human emotion and the beauty of fleeting moments.
+**ONLY U** is a melodic house/melodic techno remix of "Brandy - I Wanna Be Down" that features lush pluck breakdowns, groovy baselines, hard hitting spring loaded stabs, and choppy leads.
