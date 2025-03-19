@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const imageUrl = "/images/main.jpg";
-const title = "PHICTION | Upcomming Shows";
+const title = "PHICTION | Upcoming Shows";
 ---
 
 <BaseLayout title={title}>
@@ -15,10 +15,20 @@ const title = "PHICTION | Upcomming Shows";
       class="background-image"
     />
     <div class="overlay">
-      <h1>Shows</h1>
-      <p>use seated</p>
+      <div class="shows-container">
+        <h1>Shows</h1>
+        <!-- Seated Widget -->
+        <div 
+          id="seated-55fdf2c0" 
+          data-artist-id="a654478b-e488-4765-979a-56f82d57e4db" 
+          data-css-version="3"
+        ></div>
+      </div>
     </div>
+  </div>
 </BaseLayout>
+
+<script is:inline src="https://widget.seated.com/app.js"></script>
 
 <style>
   .background-container {
@@ -41,11 +51,24 @@ const title = "PHICTION | Upcomming Shows";
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
   }
   
+  .shows-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 </style>

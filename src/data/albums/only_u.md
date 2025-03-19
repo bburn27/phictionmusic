@@ -8,6 +8,7 @@ tracks:
   - "ONLY U (Radio Edit)"
   - "ONLY U (Club Edit)"
 artist: "phiction"
+link: "https://soundcloud.com/phctn/only-u"
 ---
 
 **ONLY U** is a melodic house/melodic techno remix of "Brandy - I Wanna Be Down" that features lush pluck breakdowns, groovy baselines, hard hitting spring loaded stabs, and choppy leads.
