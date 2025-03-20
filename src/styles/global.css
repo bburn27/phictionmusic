@@ -243,3 +243,57 @@ dd {
     gap: 1rem;
   }
 }
+
+html,
+body,
+a,
+button,
+input,
+textarea,
+select,
+label,
+form,
+[role="button"],
+.form-group,
+#contact-form,
+.contact-container,
+#message,
+#email,
+#name,
+iframe,
+#seated-55fdf2c0 {
+  cursor: none !important;
+}
+
+/* Basic styles for the custom cursor */
+.curzr {
+  pointer-events: none;
+  /* Initial styles are set via JS */
+}
+
+/* Force the custom cursor on all elements */
+* {
+  cursor: none !important;
+}
+
+/* On narrow screens or mobile, disable the custom cursor */
+@media (max-width: 800px) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: auto !important;
+  }
+  
+  .curzr {
+    display: none !important;
+  }
+}
+
+/* Add this class to any element that should trigger the hover effect */
+.curzr-hover {
+  /* This class works with the JS to trigger hover state */
+}
