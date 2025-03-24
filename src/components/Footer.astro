@@ -56,4 +56,17 @@ import Separator from "../components/Separator.astro";
   p a:hover {
     text-decoration: underline;
   }
+
+  @media screen and (max-width: 768px) {
+    footer {
+      gap: 1rem;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .footer-icons a {
+      font-size: 1.5rem;
+    }
+  }
 </style>

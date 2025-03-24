@@ -28,7 +28,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1;
-  font-family: 'Instrument Sans Variable', serif;
+  font-family: "Instrument Sans Variable", serif;
   font-variant-ligatures: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,7 +50,7 @@ h3 {
   margin-bottom: 2.5rem;
 }
 
-p+h3 {
+p + h3 {
   margin-top: 4rem;
 }
 
@@ -160,13 +160,42 @@ img {
   padding: 3rem 0 10vh;
   grid-template-columns: 100%;
   grid-auto-columns: auto;
-  grid-template-areas: 'img' 'content';
+  grid-template-areas: "img" "content";
+}
+
+.background-container {
+  position: center;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: blur(30px);
+  position: absolute;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  z-index: 1;
 }
 
 @media screen and (min-width: 44em) {
   .content-wrap {
     grid-template-columns: 35vw 1fr;
-    grid-template-areas: 'img content';
+    grid-template-areas: "img content";
   }
 }
 
@@ -287,7 +316,7 @@ iframe,
   select {
     cursor: auto !important;
   }
-  
+
   .curzr {
     display: none !important;
   }

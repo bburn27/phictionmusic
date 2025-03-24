@@ -62,7 +62,6 @@ const { Content } = await render(artist);
       class="background-image"
     />
 
-    <Separator />
     <div class="overlay">
     <div class="content-wrap">
       <img
@@ -92,37 +91,19 @@ const { Content } = await render(artist);
 </BaseLayout>
 
 <style>
-  .background-container {
-    position: center;
-    width: 98.25vw;
-    height: 85vh;
-    overflow: hidden;
-  }
-
-  .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: blur(100px);
-  }
 
   .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center;
-    width: 100%;
-    padding: 2rem;
+    height: 100%;
+    overflow-y: auto;
   }
 
   .content-wrap {
     grid-template-areas: "img" "content" "albums";
     grid-template-columns: 100%;
-    @media screen and (min-width: 44em) {
-      grid-template-columns: 1fr auto;
-      grid-template-areas: "img img" "content albums";
+    height: 100%;
+    @media screen and (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
     }
     @media screen and (min-width: 50em) {
       grid-template-columns: 30vw 2fr 170px;
@@ -136,10 +117,21 @@ const { Content } = await render(artist);
     width: 100%;  
     max-width: 80%;  
     display: block; 
+
+    @media screen and (max-width: 800px) {
+      max-width: 100%;
+    }
 }
 
   .content p:last-child {
     margin-top: 2.5rem;
     display: flex;
+  }
+
+  @media screen and (max-width: 800px) {
+    .content-wrap > img {
+      max-width: 500px;
+      margin: auto;
+    }
   }
 </style>
