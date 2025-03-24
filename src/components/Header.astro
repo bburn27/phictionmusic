@@ -82,6 +82,12 @@ const activeRoute = routes[currentPath] || null;
           class={activeRoute === "Contact" ? "current" : ""}
           data-astro-prefetch><TextSlider content="Contact" /></a>
       </li>
+
+      <li>
+        <a href="/phiction"   
+        class={activeRoute === "Contact" ? "current" : ""}     
+        data-astro-prefetch><TextSlider content="About" ></a>
+      </li>
     </ul>
   </div>
 </header>
@@ -183,6 +189,7 @@ const activeRoute = routes[currentPath] || null;
 
     .mobile-nav.active {
       max-width: 100vh;
+      position: fixed;
     }
 
     .nav-btn.active .line:nth-child(1) {
@@ -208,12 +215,20 @@ const activeRoute = routes[currentPath] || null;
   }
 </style>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector(".nav-btn").addEventListener("click", () => {
-      document.querySelector(".mobile-nav").classList.toggle("active");
-      document.querySelector(".nav-btn").classList.toggle("active");
-      console.log("clicked");
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const navBtn = document.querySelector(".nav-btn");
+    const mobileNav = document.querySelector(".mobile-nav");
+    
+    navBtn?.addEventListener("click", () => {
+      mobileNav?.classList.toggle("active");
+      navBtn.classList.toggle("active");
+
+      if (mobileNav.classList.contains("active")) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     });
   });
 </script>

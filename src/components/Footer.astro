@@ -13,7 +13,7 @@ import Separator from "../components/Separator.astro";
   </div>
 
   <!-- Center Text -->
-  <p>
+  <p class="footer-text-copyright">
     © 2025 PHICTION - 
     <a href="/phiction">About</a>
   </p>
@@ -61,6 +61,12 @@ import Separator from "../components/Separator.astro";
     footer {
       gap: 1rem;
       flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .footer-text-copyright {
+      display: none;
     }
   }
 

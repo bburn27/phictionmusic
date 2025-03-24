@@ -38,5 +38,11 @@ const albums = await getCollection("albums");
     align-items: center;
     gap: 2rem;
   }
+
+  @media screen and (max-width: 600px) {
+     .overlay {
+      flex-direction: column;
+     }
+    }
   
 </style>
