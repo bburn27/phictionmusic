@@ -87,7 +87,7 @@ const { Content } = await render(artist);
     </div>
     </div>
   </div>
-  </section>
+
 </BaseLayout>
 
 <style>
@@ -95,6 +95,10 @@ const { Content } = await render(artist);
   .overlay {
     height: 100%;
     overflow-y: auto;
+  }
+
+  .background-image {
+    object-position: right;
   }
 
   .content-wrap {
@@ -135,7 +139,7 @@ const { Content } = await render(artist);
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     .content-wrap > img {
       max-width: 100%;
       margin: auto;
