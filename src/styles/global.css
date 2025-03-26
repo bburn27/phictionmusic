@@ -32,6 +32,8 @@ body {
   font-variant-ligatures: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100dvh;
+  overflow: hidden;
 
   &.blurred {
     filter: blur(5px);
@@ -165,14 +167,14 @@ img {
 .background-container {
   position: center;
   width: 100%;
-  height: 80dvh;
+  height: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0;
   overflow-y: hidden;
+  padding: 10dvh 0;
 }
 
 .background-image {
@@ -189,16 +191,10 @@ img {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
   z-index: 1;
   overflow-y: auto;
   height: 100%;
-}
-
-@media screen and (max-width: 480px) {
-  .background-container {
-    padding: 4rem 0;
-  }
+  padding: 2rem;
 }
 
 @media screen and (min-width: 44em) {

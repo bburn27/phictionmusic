@@ -109,6 +109,12 @@ const activeRoute = routes[currentPath] || null;
     display: flex;
     justify-content: space-between;
     height: 10dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--color-bg);
+    z-index: 100;
+    width: 100%;
   }
   header a.current {
     pointer-events: none;

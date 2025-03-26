@@ -105,7 +105,9 @@ const title = "PHICTION | Contact";
 
 <style>
 
-  
+.overlay {
+      display: block;
+    }
   .contact-container {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
@@ -113,6 +115,7 @@ const title = "PHICTION | Contact";
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     width: 100%;
+    margin: 0 auto
   }
 
   h1 {
@@ -205,5 +208,11 @@ const title = "PHICTION | Contact";
   
   ::placeholder {
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media screen and (max-width: 480px) {
+    .overlay {
+      padding: 2rem 1rem;
+    }
   }
 </style>
