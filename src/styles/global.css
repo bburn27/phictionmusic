@@ -192,9 +192,15 @@ img {
   align-items: center;
   width: 100%;
   z-index: 1;
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 100%;
   padding: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .overlay {
+    overflow-y: auto;
+  }
 }
 
 @media screen and (min-width: 44em) {
