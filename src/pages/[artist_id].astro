@@ -62,14 +62,16 @@ const { Content } = await render(artist);
       class="background-image"
     />
 
-    <Separator />
     <div class="overlay">
     <div class="content-wrap">
-      <img
+      <div class="image-container">
+        <img
         class="image fade-in"
         src={artist.data.image.src}
         alt={artist.data.image.alt}
       />
+      </div>
+     
       <div class="content">
         <h3>Biography</h3>
         <Content />
@@ -88,41 +90,40 @@ const { Content } = await render(artist);
     </div>
     </div>
   </div>
-  </section>
+
 </BaseLayout>
 
 <style>
-  .background-container {
-    position: center;
-    width: 98.25vw;
-    height: 85vh;
-    overflow: hidden;
+
+  .overlay {
+    height: 100%;
+    overflow-y: hidden;
   }
 
   .background-image {
-    width: 100%;
+    object-position: right;
+  }
+
+  .image-container {
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .image-container > img {
     height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: blur(100px);
+    object-fit: contain;
+    background: transparent;
+    object-position: top;
   }
-
-  .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center;
-    width: 100%;
-    padding: 2rem;
-  }
-
   .content-wrap {
     grid-template-areas: "img" "content" "albums";
     grid-template-columns: 100%;
-    @media screen and (min-width: 44em) {
-      grid-template-columns: 1fr auto;
-      grid-template-areas: "img img" "content albums";
+    height: 100%;
+    overflow: hidden;
+    @media screen and (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+      height: unset;
     }
     @media screen and (min-width: 50em) {
       grid-template-columns: 30vw 2fr 170px;
@@ -134,12 +135,50 @@ const { Content } = await render(artist);
   }
   .content {
     width: 100%;  
-    max-width: 80%;  
+    /* max-width: 80%;   */
     display: block; 
+    font-size: 0.75rem;
+
+    @media screen and (max-width: 800px) {
+      max-width: 100%;
+    }
 }
 
   .content p:last-child {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     display: flex;
+  }
+
+  .content h3 {
+    margin: 1rem 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    .content-wrap > img {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .overlay {
+      display: block;
+      overflow-y: auto;
+    }
+
+    .content {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .content-wrap > img {
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+
+  @media screen and (min-width: 800px ) and (max-height: 800px) {
+    .content {
+      font-size: 0.5rem;
+    }
   }
 </style>

@@ -2,143 +2,152 @@
 
 class CircleAndDot {
   constructor() {
-    this.root = document.body
-    this.cursor = document.querySelector(".curzr")
+    this.root = document.body;
+    this.cursor = document.querySelector(".curzr");
 
-    this.position = {
-      distanceX: 0, 
+    (this.position = {
+      distanceX: 0,
       distanceY: 0,
       distance: 0,
       pointerX: 0,
       pointerY: 0,
-    },
-    this.previousPointerX = 0
-    this.previousPointerY = 0
-    this.angle = 0
-    this.previousAngle = 0
-    this.angleDisplace = 0
-    this.degrees = 57.296
-    this.cursorSize = 35
-    this.fading = false
+    }),
+      (this.previousPointerX = 0);
+    this.previousPointerY = 0;
+    this.angle = 0;
+    this.previousAngle = 0;
+    this.angleDisplace = 0;
+    this.degrees = 57.296;
+    this.cursorSize = 35;
+    this.fading = false;
 
     this.cursorStyle = {
-      boxSizing: 'border-box',
-      position: 'fixed',
-      top: `${ this.cursorSize / -2 }px`,
-      left: `${ this.cursorSize / -2 }px`,
-      zIndex: '2147483647',
-      width: `${ this.cursorSize }px`,
-      height: `${ this.cursorSize }px`,
-      backgroundColor: '#fff0',
-      border: '1.25px solid #111920',
-      borderRadius: '50%',
-      boxShadow: '0 -15px 0 -8px #0000',
-      transition: '250ms, transform 100ms',
-      userSelect: 'none',
-      pointerEvents: 'none'
-    }
+      boxSizing: "border-box",
+      position: "fixed",
+      top: `${this.cursorSize / -2}px`,
+      left: `${this.cursorSize / -2}px`,
+      zIndex: "2147483647",
+      width: `${this.cursorSize}px`,
+      height: `${this.cursorSize}px`,
+      backgroundColor: "#fff0",
+      border: "1.25px solid #111920",
+      borderRadius: "50%",
+      boxShadow: "0 -15px 0 -8px #0000",
+      transition: "250ms, transform 100ms",
+      userSelect: "none",
+      pointerEvents: "none",
+    };
 
-    this.init(this.cursor, this.cursorStyle)
+    this.init(this.cursor, this.cursorStyle);
   }
 
   init(el, style) {
-    Object.assign(el.style, style)
-    this.cursor.removeAttribute("hidden")
-    
+    Object.assign(el.style, style);
+    this.cursor.removeAttribute("hidden");
   }
 
   move(event) {
-    this.previousPointerX = this.position.pointerX
-    this.previousPointerY = this.position.pointerY
-    this.position.pointerX = event.pageX + this.root.getBoundingClientRect().x
-    this.position.pointerY = event.pageY + this.root.getBoundingClientRect().y
-    this.position.distanceX = this.previousPointerX - this.position.pointerX
-    this.position.distanceY = this.previousPointerY - this.position.pointerY
-    this.distance = Math.sqrt(this.position.distanceY ** 2 + this.position.distanceX ** 2)
+    this.previousPointerX = this.position.pointerX;
+    this.previousPointerY = this.position.pointerY;
+    this.position.pointerX = event.pageX + this.root.getBoundingClientRect().x;
+    this.position.pointerY = event.pageY + this.root.getBoundingClientRect().y;
+    this.position.distanceX = this.previousPointerX - this.position.pointerX;
+    this.position.distanceY = this.previousPointerY - this.position.pointerY;
+    this.distance = Math.sqrt(
+      this.position.distanceY ** 2 + this.position.distanceX ** 2
+    );
 
-    if (event.target.localName === 'button' || 
-        event.target.localName === 'a' || 
-        event.target.onclick !== null ||
-        event.target.className.includes('curzr-hover')) {
-      this.hover()
+    if (
+      event.target.localName === "button" ||
+      event.target.localName === "a" ||
+      event.target.onclick !== null ||
+      event.target.className.includes("curzr-hover")
+    ) {
+      this.hover();
     } else {
-      this.hoverout()
+      this.hoverout();
     }
 
-    this.cursor.style.transform = `translate3d(${this.position.pointerX}px, ${this.position.pointerY}px, 0)`
+    this.cursor.style.transform = `translate3d(${this.position.pointerX}px, ${this.position.pointerY}px, 0)`;
 
-    this.rotate(this.position)
-    this.fade(this.distance)
+    this.rotate(this.position);
+    this.fade(this.distance);
   }
 
   rotate(position) {
-    let unsortedAngle = Math.atan(Math.abs(position.distanceY) / Math.abs(position.distanceX)) * this.degrees
-    this.previousAngle = this.angle
+    let unsortedAngle =
+      Math.atan(Math.abs(position.distanceY) / Math.abs(position.distanceX)) *
+      this.degrees;
+    this.previousAngle = this.angle;
 
     if (position.distanceX <= 0 && position.distanceY >= 0) {
-      this.angle = 90 - unsortedAngle + 0
+      this.angle = 90 - unsortedAngle + 0;
     } else if (position.distanceX < 0 && position.distanceY < 0) {
-      this.angle = unsortedAngle + 90
+      this.angle = unsortedAngle + 90;
     } else if (position.distanceX >= 0 && position.distanceY <= 0) {
-      this.angle = 90 - unsortedAngle + 180
+      this.angle = 90 - unsortedAngle + 180;
     } else if (position.distanceX > 0 && position.distanceY > 0) {
-      this.angle = unsortedAngle + 270
+      this.angle = unsortedAngle + 270;
     }
 
     if (isNaN(this.angle)) {
-      this.angle = this.previousAngle
+      this.angle = this.previousAngle;
     } else {
       if (this.angle - this.previousAngle <= -270) {
-        this.angleDisplace += 360 + this.angle - this.previousAngle
+        this.angleDisplace += 360 + this.angle - this.previousAngle;
       } else if (this.angle - this.previousAngle >= 270) {
-        this.angleDisplace += this.angle - this.previousAngle - 360
+        this.angleDisplace += this.angle - this.previousAngle - 360;
       } else {
-        this.angleDisplace += this.angle - this.previousAngle
+        this.angleDisplace += this.angle - this.previousAngle;
       }
     }
-    this.cursor.style.transform += ` rotate(${this.angleDisplace}deg)`
+    this.cursor.style.transform += ` rotate(${this.angleDisplace}deg)`;
   }
 
   hover() {
-    this.cursor.style.border = '10px solid #279696'
+    this.cursor.style.border = "10px solid #279696";
   }
 
   hoverout() {
-    this.cursor.style.border = '1.25px solid #111920'
+    this.cursor.style.border = "1.25px solid #111920";
   }
 
   fade(distance) {
-    this.cursor.style.boxShadow = `0 ${-15 - distance}px 0 -8px #111920, 0 0 0 1px #F2F5F8`
+    this.cursor.style.boxShadow = `0 ${-15 - distance}px 0 -8px #111920, 0 0 0 1px #F2F5F8`;
     if (!this.fading) {
-      this.fading = true
+      this.fading = true;
       setTimeout(() => {
-        this.cursor.style.boxShadow = '0 -15px 0 -8px #11192000, 0 0 0 1px #F2F5F8'
-        this.fading = false
-      }, 50)
+        this.cursor.style.boxShadow =
+          "0 -15px 0 -8px #11192000, 0 0 0 1px #F2F5F8";
+        this.fading = false;
+      }, 50);
     }
   }
 
   click() {
-    this.cursor.style.transform += ` scale(0.75)`
+    this.cursor.style.transform += ` scale(0.75)`;
     setTimeout(() => {
-      this.cursor.style.transform = this.cursor.style.transform.replace(` scale(0.75)`, '')
-    }, 35)
+      this.cursor.style.transform = this.cursor.style.transform.replace(
+        ` scale(0.75)`,
+        ""
+      );
+    }, 35);
   }
 
   remove() {
-    this.cursor.remove()
+    this.cursor.remove();
   }
 }
 
 // Helper function to apply cursor styling to iframes
 const applyToIframes = () => {
   // Try to apply the cursor style to all iframes
-  document.querySelectorAll('iframe').forEach(iframe => {
+  document.querySelectorAll("iframe").forEach((iframe) => {
     try {
       // Only if we can access the iframe content (same origin)
       if (iframe.contentDocument) {
-        const style = iframe.contentDocument.createElement('style');
-        style.textContent = '* { cursor: none !important; }';
+        const style = iframe.contentDocument.createElement("style");
+        style.textContent = "* { cursor: none !important; }";
         iframe.contentDocument.head.appendChild(style);
       }
     } catch (e) {
@@ -148,52 +157,80 @@ const applyToIframes = () => {
 };
 
 // Initialize the cursor when the DOM is loaded
-document.addEventListener('astro:page-load', () => {
+document.addEventListener("astro:page-load", () => {
   // Check if the cursor element already exists
-  if (!document.querySelector('.curzr')) {
+  if (!document.querySelector(".curzr")) {
     // Create the cursor element if it doesn't exist
-    const cursorElement = document.createElement('div');
-    cursorElement.className = 'curzr';
-    cursorElement.setAttribute('hidden', '');
+    const cursorElement = document.createElement("div");
+    cursorElement.className = "curzr";
+    cursorElement.setAttribute("hidden", "");
     document.body.appendChild(cursorElement);
   }
-  
+
   const cursor = new CircleAndDot();
-  
-  if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+  if (
+    !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
     document.onmousemove = function (event) {
       cursor.move(event);
-    }
+    };
     document.onclick = function () {
       cursor.click();
-    }
-    
+    };
+
     // Apply cursor style to iframes initially
     applyToIframes();
-    
+
     // Handle iframe loading
-    document.querySelectorAll('iframe').forEach(iframe => {
-      iframe.addEventListener('load', applyToIframes);
+    document.querySelectorAll("iframe").forEach((iframe) => {
+      iframe.addEventListener("load", applyToIframes);
     });
-    
+
     // Periodic check for dynamically added elements
     const observer = new MutationObserver(() => {
       applyToIframes();
     });
-    
-    observer.observe(document.body, { 
-      childList: true, 
-      subtree: true 
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
-    
   } else {
     cursor.remove();
   }
 });
 
+// Handle window resize
+window.addEventListener("resize", () => {
+  const cursor = document.querySelector(".curzr");
+  if (cursor) {
+    cursor.remove();
+  }
+
+  // Reinitialize the cursor
+  const cursorElement = document.createElement("div");
+  cursorElement.className = "curzr";
+  cursorElement.setAttribute("hidden", "");
+  document.body.appendChild(cursorElement);
+
+  const newCursor = new CircleAndDot();
+  document.onmousemove = function (event) {
+    newCursor.move(event);
+  };
+  document.onclick = function () {
+    newCursor.click();
+  };
+
+  // Reapply cursor style to iframes
+  applyToIframes();
+});
+
 // Handle Astro page transitions
-document.addEventListener('astro:before-swap', () => {
-  const cursor = document.querySelector('.curzr');
+document.addEventListener("astro:before-swap", () => {
+  const cursor = document.querySelector(".curzr");
   if (cursor) {
     cursor.remove();
   }

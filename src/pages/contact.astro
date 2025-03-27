@@ -104,36 +104,18 @@ const title = "PHICTION | Contact";
 </script>
 
 <style>
-  .background-container {
-    position: center;
-    width: 98.25vw;
-    height: 85vh;
-    overflow: hidden;
-  }
 
-  .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: blur(100px);
-  }
-
-  .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 800px;
-    padding: 2rem;
-  }
-  
+.overlay {
+      display: block;
+    }
   .contact-container {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto
   }
 
   h1 {
@@ -226,5 +208,11 @@ const title = "PHICTION | Contact";
   
   ::placeholder {
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media screen and (max-width: 480px) {
+    .overlay {
+      padding: 2rem 1rem;
+    }
   }
 </style>
