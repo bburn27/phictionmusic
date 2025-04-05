@@ -9,9 +9,13 @@ export default defineConfig({
     enabled: false
   },
   prefetch: true,
-  site: 'https://playersclub88.netlify.app/',
+  site: 'https://phictionmusic.com', 
+  output: "static",
   integrations: [sitemap()],
   experimental: {
     svg: true,
   },
+  build: {
+    assets: 'assets', 
+  }
 });
