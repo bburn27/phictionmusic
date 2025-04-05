@@ -45,10 +45,15 @@ const nextArtistIndex = (currentArtistIndex + 1) % artists.length;
 const nextArtist = artists[nextArtistIndex];
 
 // Fetch all albums that belong to the current artist
-const albums = await getCollection(
+const allAlbums = await getCollection(
   "albums",
   ({ data }) => data.artist.id === artist_id,
 );
+
+// Sort albums by publishDate (newest first) and limit to the latest 2 albums
+const albums = allAlbums
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
+  .slice(0, 2);
 
 // Render the content of the current artist (e.g., markdown or MDX)
 const { Content } = await render(artist);
@@ -82,7 +87,7 @@ const { Content } = await render(artist);
       {
         albums.length > 0 && (
           <div class="albums">
-            <h3>Releases</h3>
+            <h3>Latest Releases</h3>
             <AlbumGrid albums={albums} />
           </div>
         )
