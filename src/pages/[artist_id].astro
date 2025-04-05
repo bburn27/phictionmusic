@@ -98,6 +98,8 @@ const { Content } = await render(artist);
   .overlay {
     height: 100%;
     overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
   }
 
   .background-image {
@@ -126,8 +128,10 @@ const { Content } = await render(artist);
       height: unset;
     }
     @media screen and (min-width: 50em) {
-      grid-template-columns: 30vw 2fr 170px;
+      display: grid;
+      grid-template-columns: 25vw minmax(0, 1fr) 170px;
       grid-template-areas: "img content albums";
+      gap: 3rem;
     }
   }
   .albums {
@@ -135,9 +139,9 @@ const { Content } = await render(artist);
   }
   .content {
     width: 100%;  
-    /* max-width: 80%;   */
+    max-width: 100%;   
     display: block; 
-    font-size: 0.75rem;
+    font-size: 1rem;
 
     @media screen and (max-width: 800px) {
       max-width: 100%;
