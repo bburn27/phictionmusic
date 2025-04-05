@@ -8,7 +8,11 @@ const imageUrl = "/images/main.jpg";
 const title = "PHICTION | Releases";
 
 // Sample album data (Replace this with actual album collection fetching logic)
-const albums = await getCollection("albums");
+const allAlbums = await getCollection("albums");
+
+const albums = allAlbums.sort((a, b) => {
+  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+});
 ---
 
 <BaseLayout title={title}>
