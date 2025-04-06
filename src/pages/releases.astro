@@ -42,7 +42,13 @@ const albums = allAlbums.sort((a, b) => {
     align-items: center;
     gap: 2rem;
   }
-  
+
+  @media screen and (max-width: 600px) {
+  .overlay {
+    display: grid;
+  }
+  }
+
   @media screen and (max-width: 768px) {
   .overlay {
     display: flex;
@@ -54,5 +60,5 @@ const albums = allAlbums.sort((a, b) => {
     width: 100%;
     max-width: 400px;
   }
-}
+  }
 </style>
