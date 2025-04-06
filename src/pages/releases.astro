@@ -42,5 +42,17 @@ const albums = allAlbums.sort((a, b) => {
     align-items: center;
     gap: 2rem;
   }
-
+  
+  @media screen and (max-width: 768px) {
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  
+  .album-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
 </style>
