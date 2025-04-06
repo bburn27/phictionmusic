@@ -107,10 +107,6 @@ const { Content } = await render(artist);
     justify-content: center;
   }
 
-  .background-image {
-    object-position: right;
-  }
-
   .image-container {
     overflow: hidden;
     background: transparent;
@@ -122,6 +118,7 @@ const { Content } = await render(artist);
     background: transparent;
     object-position: top;
   }
+  
   .content-wrap {
     grid-template-areas: "img" "content" "albums";
     grid-template-columns: 100%;
@@ -130,7 +127,8 @@ const { Content } = await render(artist);
     @media screen and (max-width: 800px) {
       display: flex;
       flex-direction: column;
-      height: unset;
+      height: auto;
+      gap: 1rem;
     }
     @media screen and (min-width: 50em) {
       display: grid;
@@ -139,6 +137,7 @@ const { Content } = await render(artist);
       gap: 3rem;
     }
   }
+
   .albums {
     grid-area: albums;
   }
