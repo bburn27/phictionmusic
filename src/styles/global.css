@@ -333,6 +333,36 @@ iframe,
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  /* Fix height calculations for iOS Safari */
+  body, .background-container, .overlay {
+    height: -webkit-fill-available;
+  }
+  
+  /* Fix album card sizing on releases page */
+  .album-card {
+    min-width: 280px; /* Prevent tiny album cards on iOS */
+    width: 85%; /* Make cards take up more space on mobile */
+    margin: 0 auto; /* Center the cards */
+  }
+  
+  /* Fix vertical spacing in artist page */
+  [data-page="phiction"] .content-wrap {
+    gap: 1rem; /* Reduce the gap between image and content */
+  }
+  
+  /* Force proper image display */
+  .image-container > img {
+    max-height: 40vh; /* Limit image height */
+  }
+  
+  /* Ensure content is scrollable on iOS */
+  .overlay {
+    overflow-y: auto !important; /* Force scrolling to work properly */
+    padding-bottom: 12vh; /* Add space for the footer */
+  }
+}
+
 /* Add this class to any element that should trigger the hover effect */
 .curzr-hover {
   /* This class works with the JS to trigger hover state */
