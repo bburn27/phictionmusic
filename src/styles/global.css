@@ -203,6 +203,21 @@ img {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .album-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+}
+
 @media screen and (min-width: 44em) {
   .content-wrap {
     grid-template-columns: 35vw 1fr;
@@ -331,9 +346,4 @@ iframe,
   .curzr {
     display: none !important;
   }
-}
-
-/* Add this class to any element that should trigger the hover effect */
-.curzr-hover {
-  /* This class works with the JS to trigger hover state */
 }
