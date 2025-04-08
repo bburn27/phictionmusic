@@ -1,0 +1,69 @@
+---
+// This is a minimal version with immediate redirect
+import { getCollection } from "astro:content";
+
+// Function to fetch and redirect to the newest release
+async function getNewestReleaseUrl() {
+  try {
+    // Fetch all albums
+    const allAlbums = await getCollection("albums");
+    
+    // Filter to only include albums with publish dates and links
+    const validAlbums = allAlbums.filter(album => 
+      album.data.publishDate && 
+      album.data.link && 
+      typeof album.data.link === 'string' && 
+      album.data.link.trim() !== ''
+    );
+    
+    // If no valid albums, return to home
+    if (validAlbums.length === 0) {
+      return "/";
+    }
+    
+    // Sort by publish date, newest first
+    const sortedAlbums = validAlbums.sort((a, b) => {
+      const dateA = new Date(a.data.publishDate).getTime();
+      const dateB = new Date(b.data.publishDate).getTime();
+      return dateB - dateA;
+    });
+    
+    // Get the most recent album
+    const newestAlbum = sortedAlbums[0];
+    
+    // Return its link or fallback to home
+    return newestAlbum.data.link || "/";
+  } catch (error) {
+    return "/";
+  }
+}
+
+// Get the redirect URL
+const redirectUrl = await getNewestReleaseUrl();
+
+// Fallback to a known album link if collection approach fails
+const finalRedirectUrl = (redirectUrl === "/") ? "https://too.fm/8rk2p4b" : redirectUrl;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHICTION</title>
+  <meta http-equiv="refresh" content={`0;url=${finalRedirectUrl}`}>
+  <script define:vars={{finalRedirectUrl}}>
+  // Instant redirect with JavaScript (in case meta refresh has a delay)
+  window.location.replace(finalRedirectUrl);
+  </script>
+  <style>
+    /* Hide everything - user should never see this page */
+    body { 
+      display: none;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
