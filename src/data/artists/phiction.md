@@ -13,4 +13,4 @@ His journey began at the age of 10 when he got his first set of turntables, insp
 
 Beyond the studio, Phiction plays an integral role in We Didn’t Planet, a grassroots music event community in New Orleans. He helps organize, run sound, and perform at events, working to unite artists and create new opportunities within the local scene.
 
-Currently releasing music independently, Phiction is focused on pushing his creative boundaries, building his presence in the industry, and working toward signing with a major label by the end of 2025. With a deep love for the craft and an ever-evolving sound, he is set on making a lasting impact in the world of electronic music.
+Currently releasing music independently, Phiction is focused on pushing his creative boundaries, building his presence in the industry, and working toward building a community around his music. With a deep love for the craft and an ever-evolving sound, he is set on making a lasting impact in the world of electronic music.
