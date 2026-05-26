@@ -12,9 +12,7 @@ export default defineConfig({
   site: 'https://phictionmusic.com', 
   output: "static",
   integrations: [sitemap()],
-  experimental: {
-    svg: true,
-  },
+  experimental: {},
   build: {
     assets: 'assets', 
   }
